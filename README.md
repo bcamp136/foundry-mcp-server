@@ -126,6 +126,9 @@ If not set, defaults to the current working directory.
 ### Forge Tools
 - `forge_build` - Compile contracts
 - `forge_test` - Run tests
+- `forge_gas_report` - Generate detailed gas usage reports with min/avg/median/max costs
+- `forge_gas_snapshot` - Create, compare, and manage gas snapshots for regression testing
+- `forge_gas_optimize` - Analyze gas patterns and provide optimization suggestions
 
 ### Anvil Tools  
 - `anvil_start` - Start local blockchain
@@ -145,6 +148,12 @@ If not set, defaults to the current working directory.
 ### Template Tools
 - `generate_contract_prompt` - Generate structured prompts for AI tools following Foundry best practices
 - `foundry_project_template` - Generate complete Foundry project structure with configuration
+
+### Gas Analysis Tools
+- `gas_profile_function` - Profile specific function gas usage with targeted analysis
+- `gas_compare_implementations` - Compare gas costs between different implementations
+- `gas_regression_test` - Monitor for gas usage regressions against baselines
+- `gas_optimization_suggestions` - Get specific optimization recommendations
 
 ## Creating Smart Contracts with AI
 
@@ -179,6 +188,66 @@ This MCP server includes specialized tools for generating smart contracts using 
 - **Governance**: Voting and proposal mechanisms
 - **Proxy**: Upgradeable contract patterns
 - **Custom**: Any other contract type
+
+## Gas Optimization Workflow
+
+This MCP server provides comprehensive gas analysis and optimization tools based on Foundry's gas tracking capabilities.
+
+### Gas Analysis Pipeline:
+
+1. **Generate baseline reports**:
+   ```
+   Use forge_gas_report to get detailed function-level gas usage
+   Use forge_gas_snapshot with action="create" to establish baselines
+   ```
+
+2. **Profile specific functions**:
+   ```
+   Use gas_profile_function for targeted analysis of expensive functions
+   Compare different implementation approaches with gas_compare_implementations
+   ```
+
+3. **Monitor for regressions**:
+   ```
+   Use gas_regression_test to detect gas increases during development
+   Set up automated testing with configurable thresholds
+   ```
+
+4. **Get optimization guidance**:
+   ```
+   Use gas_optimization_suggestions for targeted improvement recommendations
+   Focus on specific areas: deployment, functions, loops, storage, external_calls
+   ```
+
+### Optimization Strategies Supported:
+
+- **Function-level Analysis**: Min/avg/median/max gas costs per function
+- **Snapshot Comparisons**: Track gas usage changes over time  
+- **Implementation Testing**: A/B test different coding approaches
+- **Regression Detection**: Automated monitoring with configurable thresholds
+- **Targeted Recommendations**: Focus on deployment, loops, storage, or external calls
+
+### Example Gas Optimization Workflow:
+
+```bash
+# 1. Establish baseline
+forge_gas_snapshot action="create" snapshotFile=".gas-baseline"
+
+# 2. Get detailed function analysis  
+forge_gas_report matchContract="MyContract"
+
+# 3. Profile expensive functions
+gas_profile_function contractName="MyContract" functionName="expensiveFunction"
+
+# 4. Test optimization
+# ... make code changes ...
+
+# 5. Check for regressions
+gas_regression_test baselineSnapshot=".gas-baseline" threshold=5
+
+# 6. Compare implementations
+gas_compare_implementations implementationTests=["testOriginal", "testOptimized"]
+```
 
 ## Security
 
