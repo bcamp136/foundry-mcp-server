@@ -1,0 +1,21 @@
+{
+  "name": "foundry-mcp-server",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "foundry-mcp-server": "dist/server.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/server.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.21.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "@types/node": "^22.0.0",
+    "ts-node": "^10.9.2"
+  }
+}
