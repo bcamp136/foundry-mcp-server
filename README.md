@@ -142,6 +142,44 @@ If not set, defaults to the current working directory.
 ### Project Tools
 - `foundry_project_info` - Get project directory structure
 
+### Template Tools
+- `generate_contract_prompt` - Generate structured prompts for AI tools following Foundry best practices
+- `foundry_project_template` - Generate complete Foundry project structure with configuration
+
+## Creating Smart Contracts with AI
+
+This MCP server includes specialized tools for generating smart contracts using AI tools like ChatGPT or Claude, following Foundry's official prompting guidelines.
+
+### Workflow:
+
+1. **Generate a structured prompt**:
+   ```
+   Use the generate_contract_prompt tool with your requirements:
+   - Requirements: "Create an ERC20 token with minting and burning capabilities"
+   - Contract type: "token" 
+   - Include comprehensive tests and deployment scripts
+   ```
+
+2. **Copy the generated prompt** to your AI tool of choice (ChatGPT, Claude, etc.)
+
+3. **Get AI-generated code** that follows Foundry best practices including:
+   - Proper project structure
+   - Comprehensive testing (unit, fuzz, invariant)
+   - Security best practices
+   - Deployment scripts with verification
+   - NatSpec documentation
+
+4. **Generate project structure** using `foundry_project_template` for a complete boilerplate
+
+### Supported Contract Types:
+- **Token**: ERC20 implementations with advanced features
+- **Vault**: ERC4626 compliant vaults with yield mechanisms  
+- **DeFi**: DEX, lending, and other DeFi protocols
+- **NFT**: ERC721/ERC1155 implementations
+- **Governance**: Voting and proposal mechanisms
+- **Proxy**: Upgradeable contract patterns
+- **Custom**: Any other contract type
+
 ## Security
 
 ⚠️ **Important**: Never commit private keys to version control. Always use environment variables or secure key management solutions.
