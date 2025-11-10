@@ -6,6 +6,7 @@ import { registerCastTools } from "./tools/cast.js";
 import { registerProjectTools } from "./tools/project.js";
 import { registerTemplateTools } from "./tools/templates.js";
 import { registerGasTools } from "./tools/gas.js";
+import { registerChiselTools } from "./tools/chisel.js";
 
 // Create MCP server
 const server = new McpServer({
@@ -13,15 +14,14 @@ const server = new McpServer({
   version: "0.1.0"
 });
 
-// Register all tools
-registerForgeTools(server);
-registerAnvilTools(server);
-registerCastTools(server);
-registerProjectTools(server);
-registerTemplateTools(server);
-registerGasTools(server);
-
-// --- Start the MCP server over stdio -----------------------
+  // Register all tools
+  registerForgeTools(server);
+  registerAnvilTools(server);
+  registerCastTools(server);
+  registerProjectTools(server);
+  registerTemplateTools(server);
+  registerGasTools(server);
+  registerChiselTools(server);// --- Start the MCP server over stdio -----------------------
 
 const transport = new StdioServerTransport();
 
