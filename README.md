@@ -14,7 +14,9 @@ A Model Context Protocol (MCP) server that provides tools for interacting with F
 
 2. **Install Node.js** (version 18 or higher)
 
-3. **Install the Claude for VS Code extension** from the VS Code marketplace
+3. **Ensure GitHub Copilot is set up** in VS Code with MCP support enabled
+
+> For detailed information about MCP server setup in VS Code, see the [official VS Code MCP documentation](https://code.visualstudio.com/docs/copilot/copilot-extensibility-overview#_model-context-protocol-mcp).
 
 ### Local Setup
 
@@ -32,7 +34,7 @@ A Model Context Protocol (MCP) server that provides tools for interacting with F
 
    ```json
    {
-     "claude.mcpServers": {
+     "github.copilot.chat.mcp.servers": {
        "foundry": {
          "command": "node",
          "args": ["/absolute/path/to/foundry-mcp-server/dist/server.js"],
@@ -50,7 +52,7 @@ A Model Context Protocol (MCP) server that provides tools for interacting with F
 3. **Restart VS Code** to load the MCP server
 
 4. **Verify the setup**:
-   - Open the Claude extension in VS Code
+   - Open GitHub Copilot Chat in VS Code
    - You should see the Foundry MCP server listed as connected
    - Try using tools like `foundry_project_info` to test the connection
 
@@ -68,7 +70,7 @@ Then in your VS Code settings, use:
 
 ```json
 {
-  "claude.mcpServers": {
+  "github.copilot.chat.mcp.servers": {
     "foundry": {
       "command": "foundry-mcp-server",
       "env": {
